@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp1.AddQuizWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nieuwe Quiz Toevoegen" Height="400" Width="650">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="223*" />
+            <ColumnDefinition Width="400*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="0,-4,19.2,-4.6">
+            <Label Content="Titel:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+            <Label Content="Vraag:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="QuestionTextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+            <Label Content="Antwoord a:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="AnswerATextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+            <Label Content="Antwoord b:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="AnswerBTextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+            <Label Content="Antwoord c:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="AnswerCTextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+            <Label Content="Antwoord d:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="AnswerDTextBox" HorizontalAlignment="Left" Width="200" Margin="0,0,0,2"/>
+
+            <Label Content="Juiste Antwoord:" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="CorrectAnswerComboBox" Width="200" Margin="0,2,0,5">
+                <ComboBoxItem Content="A" />
+                <ComboBoxItem Content="B" />
+                <ComboBoxItem Content="C" />
+                <ComboBoxItem Content="D" />
+            </ComboBox>
+
+            <Button Content="Voeg vraag toe" HorizontalAlignment="Left" Width="120" Click="AddQuestionButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="10.8,0,0.2,0.4">
+            <Label Content="Vragen:" HorizontalAlignment="Left"/>
+            <ListBox x:Name="QuestionsListBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2.2,8.4" Grid.Column="1" Height="19" Width="128">
+            <Button Content="Annuleren" Margin="0,0,10,0.2" Click="CancelButton_Click"/>
+            <Button Content="Toevoegen" Click="CreateNewQuiz_OnClick" Margin="0,0,0,0.2"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="QuizTime" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#F5F5F5"/>
+        </Grid.Background>
+
+        <TextBlock Text="QuizTime" FontSize="72" FontWeight="Bold" Foreground="#007ACC" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,20"/>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Start Quiz" Width="200" Margin="0,10" Click="StartQuiz_Click"/>
+            <Button Content="Beheer" Width="200" Margin="0,10" Click="BeheerQuizzes_Click"/>
+            <Button Content="Exit" Width="200" Margin="0,10" Click="Exit_Click"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>
