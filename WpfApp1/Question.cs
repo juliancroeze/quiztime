@@ -16,7 +16,7 @@ namespace WpfApp1
 
         public Question(string questionText, int? questionId = null)
         {
-            QuestionText = QuestionText;
+            QuestionText = questionText;
             QuestionID = questionId;
 
         }

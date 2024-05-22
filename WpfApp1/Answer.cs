@@ -21,7 +21,6 @@
 
         }
 
-        // Getters and setters
         public int? GetAnswerId()
         {
             return AnswerId;

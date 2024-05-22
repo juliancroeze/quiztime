@@ -6,7 +6,7 @@ namespace WpfApp1
 {
     public partial class BeheerWindow : Window
     {
-        public List<Quiz> Quizzes { get; set; }
+        public ObservableCollection<Quiz> Quizzes { get; set; }
         public DatabaseManager databaseManager;
         public JsonManager jsonManager;
 
@@ -15,7 +15,7 @@ namespace WpfApp1
             databaseManager = new DatabaseManager();
             jsonManager = new JsonManager();
             InitializeComponent();
-            Quizzes = new List<Quiz>();
+            Quizzes = new ObservableCollection<Quiz>();
             LoadQuizzes();
             DataContext = this;
         }
@@ -33,8 +33,12 @@ namespace WpfApp1
 
         private void NewQuizButton_Click(object sender, RoutedEventArgs e)
         {
-            AddQuizWindow addQuizWindow = new AddQuizWindow();
-            addQuizWindow.Owner = this;  // Set owner to the parent window
+            string quizTitle = NewQuizTextBox.Text;
+            int newQuizId = databaseManager.AddQuiz(new Quiz { Title = quizTitle });
+
+
+            AddQuizWindow addQuizWindow = new AddQuizWindow(newQuizId, quizTitle);
+            addQuizWindow.Owner = this;  
             bool? result = addQuizWindow.ShowDialog();
 
             if (result == true)
@@ -52,13 +56,18 @@ namespace WpfApp1
                 if (result == MessageBoxResult.Yes)
                 {
                     databaseManager.DeleteQuiz(selectedQuiz.ID);
-                    LoadQuizzes();  // Reload quizzes after deletion
+                    LoadQuizzes();
                 }
             }
             else
             {
                 MessageBox.Show("Selecteer een quiz om te verwijderen.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void NewQuizTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }

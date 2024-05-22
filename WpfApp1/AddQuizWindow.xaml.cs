@@ -10,10 +10,12 @@ namespace WpfApp1
         private JsonManager jsonManager;
 
         private int quizId;
-        public AddQuizWindow()
+        public AddQuizWindow(int newQuizId, string quizName)
         {
+            this.Title = quizName;
             databaseManager = new DatabaseManager();
             jsonManager = new JsonManager();
+            quizId = newQuizId;
             InitializeComponent();
         }
 
@@ -47,8 +49,7 @@ namespace WpfApp1
             databaseManager.AddQuestion(newQuestion, newAnswers, quizId);
 
 
-
-                //QuestionsListBox.Items.Add(questionSummary);
+            QuestionsListBox.Items.Add($"{newQuestion.QuestionText}");
 
             QuestionTextBox.Clear();
             AnswerATextBox.Clear();
@@ -62,21 +63,21 @@ namespace WpfApp1
         private void CreateNewQuiz_OnClick(object sender, RoutedEventArgs e)
         {
             // Assuming you have a title textbox for the quiz title
-            string title = TitleTextBox.Text;
+            //string title = TitleTextBox.Text;
 
-            Quiz newQuiz = new Quiz
-            {
-                Title = title,
-            };
+        //    Quiz newQuiz = new Quiz
+          //  {
+            //    Title = title,
+            //};
 
             // Add the new quiz to the database and get its ID
-            int quizID = databaseManager.AddQuiz(newQuiz);
+            //quizId = databaseManager.AddQuiz(newQuiz);
 
             // Add each question with the associated quizID
-            foreach (var item in QuestionsListBox.Items)
-            {
-                databaseManager.AddQuestion(item.ToString(), quizID);
-            }
+            //foreach (var item in QuestionsListBox.Items)
+            //{
+            //    databaseManager.AddQuestion(item.ToString(), quizID);
+            //}
 
             
 
