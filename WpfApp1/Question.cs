@@ -12,16 +12,16 @@ namespace WpfApp1
         public int QuizId { get; set; }
 
         public string QuestionText { get; set; }
-        public List<Answer> answers { get; set; }
+        public List<Answer> Answers { get; set; } // Changed to Answers to follow C# naming convention
 
         public Question(string questionText, int? questionId = null)
         {
             QuestionText = questionText;
             QuestionID = questionId;
-
+            Answers = new List<Answer>(); // Initialize Answers list
         }
 
-        public Question (){}
+        public Question() { }
 
         public void SetQuestionId(int? id)
         {
@@ -30,7 +30,7 @@ namespace WpfApp1
 
         public void AddAnswer(Answer answer)
         {
-            answers.Add(answer);
+            Answers.Add(answer);
         }
     }
 }

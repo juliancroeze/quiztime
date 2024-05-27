@@ -111,14 +111,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Answer.cs" />
+    <Compile Include="EditQuizWindow.xaml.cs">
+      <DependentUpon>EditQuizWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JsonManager.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="QuestionViewModel.cs" />
     <Compile Include="Quiz.cs" />
     <Page Include="AddQuizWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BeheerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditQuizWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

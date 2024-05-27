@@ -65,9 +65,25 @@ namespace WpfApp1
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Quiz selectedQuiz = QuizListBox.SelectedItem as Quiz;
+            EditQuizWindow editQuizWindow = new EditQuizWindow(selectedQuiz);
+
+            editQuizWindow.Owner = this;
+            bool? result = editQuizWindow.ShowDialog();
+
+            if (result == true)
+            {
+                LoadQuizzes();  // Reload quizzes if a new quiz was added
+            }
+        }
+
         private void NewQuizTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
         }
+
+
     }
 }

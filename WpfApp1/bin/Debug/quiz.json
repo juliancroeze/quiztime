@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "Title": "test",
+    "ID": 62,
+    "questions": [
+      {
+        "QuestionID": 66,
+        "QuizId": 62,
+        "QuestionText": "test",
+        "Answers": [
+          {
+            "AnswerId": 213,
+            "QuestionId": 66,
+            "AnswerText": "test",
+            "isCorrect": true
+          },
+          {
+            "AnswerId": 214,
+            "QuestionId": 66,
+            "AnswerText": "test",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 215,
+            "QuestionId": 66,
+            "AnswerText": "test",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 216,
+            "QuestionId": 66,
+            "AnswerText": "test",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "test",
+    "ID": 63,
+    "questions": []
+  }
+]

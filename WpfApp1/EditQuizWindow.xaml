@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfApp1.AddQuizWindow"
+﻿<Window x:Class="WpfApp1.EditQuizWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Add Quiz" Height="400" Width="650"
+        Title="Edit Quiz" Height="400" Width="650"
         Background="#212529"
         ResizeMode="NoResize">
     <Window.Resources>
@@ -108,7 +108,10 @@
                 <ComboBoxItem Content="D" />
             </ComboBox>
 
-            <Button Content="Voeg vraag toe" HorizontalAlignment="Left" Width="200" Style="{StaticResource ButtonStyle}" Click="AddQuestionButton_Click"/>
+            <Button x:Name="AddQuestionButton" Content="Toevoegen" HorizontalAlignment="Left" Width="200" Style="{StaticResource ButtonStyle}" Click="AddQuestionButton_Click"/>
+            <Button x:Name="UpdateQuestionButton" Content="Bijwerken" Click="UpdateQuestionButton_Click" Visibility="Collapsed" />
+
+               
         </StackPanel>
 
         <StackPanel Grid.Column="1" Margin="10.8,0,0.2,0.4">
@@ -133,7 +136,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2.2,0" Grid.Column="1" Height="30" Width="175">
             <Button Content="Annuleren" Click="CancelButton_Click" Margin="0,0,6,0" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Opslaan" Click="CreateNewQuiz_OnClick" Margin="0,0,0,0.2" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Opslaan" Click="SaveQuiz_OnClick" Margin="0,0,0,0.2" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

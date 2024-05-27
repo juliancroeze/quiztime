@@ -50,3 +50,6 @@ C:\Users\Julian\source\repos\WpfApp1\WpfApp1\bin\Debug\System.Threading.Tasks.Ex
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\EditQuizWindow.g.cs
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\EditQuizWindow.baml
