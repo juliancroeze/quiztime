@@ -12,12 +12,14 @@ namespace WpfApp1
         public int QuizId { get; set; }
 
         public string QuestionText { get; set; }
+        public string ImagePath { get; set; }
         public List<Answer> Answers { get; set; } // Changed to Answers to follow C# naming convention
 
-        public Question(string questionText, int? questionId = null)
+        public Question(string questionText, string imagePath, int? questionId = null)
         {
             QuestionText = questionText;
             QuestionID = questionId;
+            ImagePath = imagePath;
             Answers = new List<Answer>(); // Initialize Answers list
         }
 

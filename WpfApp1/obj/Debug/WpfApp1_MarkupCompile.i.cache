@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\App.xaml
-4-1709536115
+72138372210
 
-15-1691728047
+18-731394408
 34-1649587463
-AddQuizWindow.xaml;BeheerWindow.xaml;EditQuizWindow.xaml;MainWindow.xaml;
+AddQuizWindow.xaml;BeheerWindow.xaml;EditQuizWindow.xaml;MainWindow.xaml;PlayQuiz.xaml;QuestionDisplay.xaml;QuizControl.xaml;
 
 True
 

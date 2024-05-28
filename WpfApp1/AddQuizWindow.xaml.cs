@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -10,6 +14,7 @@ namespace WpfApp1
         private DatabaseManager databaseManager;
         private JsonManager jsonManager;
         private int quizId;
+        private QuestionViewModel selectedQuestion;
 
         public ObservableCollection<QuestionViewModel> Questions { get; set; }
 
@@ -31,6 +36,16 @@ namespace WpfApp1
             this.Close();
         }
 
+        private void BrowseImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpg)|*.png;*.jpg|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ImagePathTextBox.Text = openFileDialog.FileName;
+            }
+        }
+
         private void AddQuestionButton_Click(object sender, RoutedEventArgs e)
         {
             var newQuestion = new QuestionViewModel
@@ -40,17 +55,19 @@ namespace WpfApp1
                 AnswerB = AnswerBTextBox.Text,
                 AnswerC = AnswerCTextBox.Text,
                 AnswerD = AnswerDTextBox.Text,
-                CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString()
+                CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString(),
+                ImagePath = ImagePathTextBox.Text
             };
 
-            var question = new Question(newQuestion.QuestionText);
+            var question = new Question(newQuestion.QuestionText, newQuestion.ImagePath);
+
             var answers = new List<Answer>
-    {
-        new Answer(newQuestion.AnswerA, newQuestion.CorrectAnswer == "A"),
-        new Answer(newQuestion.AnswerB, newQuestion.CorrectAnswer == "B"),
-        new Answer(newQuestion.AnswerC, newQuestion.CorrectAnswer == "C"),
-        new Answer(newQuestion.AnswerD, newQuestion.CorrectAnswer == "D")
-    };
+            {
+                new Answer(newQuestion.AnswerA, newQuestion.CorrectAnswer == "A"),
+                new Answer(newQuestion.AnswerB, newQuestion.CorrectAnswer == "B"),
+                new Answer(newQuestion.AnswerC, newQuestion.CorrectAnswer == "C"),
+                new Answer(newQuestion.AnswerD, newQuestion.CorrectAnswer == "D")
+            };
 
             int questionID = databaseManager.AddQuestion(question, answers, quizId);
             if (questionID != -1)
@@ -59,14 +76,42 @@ namespace WpfApp1
                 Questions.Add(newQuestion);
             }
 
-            QuestionTextBox.Clear();
-            AnswerATextBox.Clear();
-            AnswerBTextBox.Clear();
-            AnswerCTextBox.Clear();
-            AnswerDTextBox.Clear();
-            CorrectAnswerComboBox.SelectedIndex = -1;
+            ClearQuestionInputs();
         }
 
+        private void UpdateQuestionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedQuestion != null)
+            {
+                selectedQuestion.QuestionText = QuestionTextBox.Text;
+                selectedQuestion.AnswerA = AnswerATextBox.Text;
+                selectedQuestion.AnswerB = AnswerBTextBox.Text;
+                selectedQuestion.AnswerC = AnswerCTextBox.Text;
+                selectedQuestion.AnswerD = AnswerDTextBox.Text;
+                selectedQuestion.CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString();
+                selectedQuestion.ImagePath = ImagePathTextBox.Text;
+
+                var question = new Question(selectedQuestion.QuestionText, selectedQuestion.ImagePath)
+                {
+                    ImagePath = selectedQuestion.ImagePath
+                };
+
+                var answers = new List<Answer>
+                {
+                    new Answer(selectedQuestion.AnswerA, selectedQuestion.CorrectAnswer == "A"),
+                    new Answer(selectedQuestion.AnswerB, selectedQuestion.CorrectAnswer == "B"),
+                    new Answer(selectedQuestion.AnswerC, selectedQuestion.CorrectAnswer == "C"),
+                    new Answer(selectedQuestion.AnswerD, selectedQuestion.CorrectAnswer == "D")
+                };
+
+                databaseManager.UpdateQuestion(selectedQuestion.QuestionID, question, answers);
+
+                Questions[Questions.IndexOf(selectedQuestion)] = selectedQuestion;
+                QuestionsListBox.Items.Refresh();
+
+                ClearQuestionInputs();
+            }
+        }
 
         private void DeleteQuestionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,31 +124,44 @@ namespace WpfApp1
 
         private void CreateNewQuiz_OnClick(object sender, RoutedEventArgs e)
         {
-            // Assuming you have a title textbox for the quiz title
-            // string title = TitleTextBox.Text;
-
-            // Quiz newQuiz = new Quiz
-            // {
-            //     Title = title,
-            // };
-
-            // Add the new quiz to the database and get its ID
-            // quizId = databaseManager.AddQuiz(newQuiz);
-
-            // Add each question with the associated quizID
-            // foreach (var item in Questions)
-            // {
-            //     databaseManager.AddQuestion(item, quizId);
-            // }
-
             MessageBox.Show("Quiz toegevoegd en opgeslagen in de database!");
-            this.DialogResult = true;  // Indicate that a new quiz was added
+            this.DialogResult = true;
             this.Close();
         }
 
         private void QuestionsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (QuestionsListBox.SelectedItem is QuestionViewModel selectedQuestion)
+            {
+                this.selectedQuestion = selectedQuestion;
+                QuestionTextBox.Text = selectedQuestion.QuestionText;
+                AnswerATextBox.Text = selectedQuestion.AnswerA;
+                AnswerBTextBox.Text = selectedQuestion.AnswerB;
+                AnswerCTextBox.Text = selectedQuestion.AnswerC;
+                AnswerDTextBox.Text = selectedQuestion.AnswerD;
+                ImagePathTextBox.Text = selectedQuestion.ImagePath;
+                CorrectAnswerComboBox.Text = selectedQuestion.CorrectAnswer;
 
+
+
+                AddQuestionButton.Visibility = Visibility.Collapsed;
+                UpdateQuestionButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ClearQuestionInputs()
+        {
+            QuestionTextBox.Clear();
+            AnswerATextBox.Clear();
+            AnswerBTextBox.Clear();
+            AnswerCTextBox.Clear();
+            AnswerDTextBox.Clear();
+            CorrectAnswerComboBox.SelectedIndex = -1;
+            ImagePathTextBox.Clear();
+
+            selectedQuestion = null;
+            AddQuestionButton.Visibility = Visibility.Visible;
+            UpdateQuestionButton.Visibility = Visibility.Collapsed;
         }
     }
 }

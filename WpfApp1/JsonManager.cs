@@ -9,10 +9,8 @@ namespace WpfApp1
     {
         public void SaveQuizToJson(List<Quiz> quizzes, string filePath)
         {
-            // Serialize the quiz object to JSON
             string json = JsonConvert.SerializeObject(quizzes, Formatting.Indented);
 
-            // Write the JSON to a file
             File.WriteAllText(filePath, json);
         }
 
@@ -23,10 +21,8 @@ namespace WpfApp1
 
         public Quiz LoadQuizFromJson(string filePath)
         {
-            // Read the JSON from the file
             string json = File.ReadAllText(filePath);
 
-            // Deserialize the JSON to a Quiz object
             Quiz quiz = JsonConvert.DeserializeObject<Quiz>(json);
 
             return quiz;

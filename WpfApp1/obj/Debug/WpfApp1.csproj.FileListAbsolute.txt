@@ -53,3 +53,9 @@ C:\Users\Julian\source\repos\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.SuggestedBindingRedirects.cache
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\EditQuizWindow.g.cs
 C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\EditQuizWindow.baml
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\PlayQuiz.baml
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\PlayQuiz.g.cs
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\QuestionDisplay.baml
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\QuizControl.baml
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\QuestionDisplay.g.cs
+C:\Users\Julian\source\repos\WpfApp1\WpfApp1\obj\Debug\QuizControl.g.cs

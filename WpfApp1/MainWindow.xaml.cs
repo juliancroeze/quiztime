@@ -12,6 +12,8 @@ namespace WpfApp1
         }
         private void StartQuiz_Click(object sender, RoutedEventArgs e)
         {
+            PlayQuiz playQuiz = new PlayQuiz();
+            playQuiz.Show();
         }
 
         private void BeheerQuizzes_Click(object sender, RoutedEventArgs e)

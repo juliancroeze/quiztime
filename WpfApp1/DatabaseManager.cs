@@ -27,7 +27,7 @@ public class DatabaseManager
     public int AddQuestion(Question question, List<Answer> answers, int quizID)
     {
         int questionID;
-        string questionQuery = "INSERT INTO questions (QuizID, QuestionText) VALUES (@QuizID, @QuestionText); SELECT LAST_INSERT_ID();";
+        string questionQuery = "INSERT INTO questions (QuizID, QuestionText, imagePath) VALUES (@QuizID, @QuestionText, @ImagePath); SELECT LAST_INSERT_ID();";
 
         using (MySqlConnection connection = new MySqlConnection(connectionString))
         {
@@ -35,6 +35,7 @@ public class DatabaseManager
             {
                 command.Parameters.AddWithValue("@QuizID", quizID);
                 command.Parameters.AddWithValue("@QuestionText", question.QuestionText);
+                command.Parameters.AddWithValue("@ImagePath", question.ImagePath);
 
                 try
                 {
@@ -174,7 +175,7 @@ public class DatabaseManager
 
         using (MySqlConnection connection = new MySqlConnection(connectionString))
         {
-            string query = $"SELECT q.QuestionId, q.QuizId, q.QuestionText, a.AnswerId, a.AnswerText, a.IsCorrect " +
+            string query = $"SELECT q.QuestionId, q.QuizId, q.QuestionText, q.imagePath, a.AnswerId, a.AnswerText, a.IsCorrect " +
                            $"FROM questions q " +
                            $"LEFT JOIN answers a ON q.QuestionId = a.QuestionId " +
                            $"WHERE q.QuizId = {id}";
@@ -191,7 +192,6 @@ public class DatabaseManager
                     // Check if the question already exists in the list
                     Question question = questions.FirstOrDefault(q => q.QuestionID == questionId);
 
-                    // If the question doesn't exist, create a new question object
                     if (question == null)
                     {
                         question = new Question
@@ -199,6 +199,7 @@ public class DatabaseManager
                             QuestionID = questionId,
                             QuizId = reader.GetInt32("QuizId"),
                             QuestionText = reader.GetString("QuestionText"),
+                            ImagePath = reader.GetString("imagePath"),
                             Answers = new List<Answer>()
                         };
                         questions.Add(question);

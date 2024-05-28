@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -84,10 +85,11 @@ namespace WpfApp1
                 AnswerB = AnswerBTextBox.Text,
                 AnswerC = AnswerCTextBox.Text,
                 AnswerD = AnswerDTextBox.Text,
+                ImagePath = ImagePathTextBox.Text,
                 CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString()
             };
 
-            var question = new Question(newQuestion.QuestionText);
+            var question = new Question(newQuestion.QuestionText, newQuestion.ImagePath);
             var answers = new List<Answer>
             {
                 new Answer(newQuestion.AnswerA, newQuestion.CorrectAnswer == "A"),
@@ -116,8 +118,7 @@ namespace WpfApp1
                 selectedQuestion.AnswerC = AnswerCTextBox.Text;
                 selectedQuestion.AnswerD = AnswerDTextBox.Text;
                 selectedQuestion.CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString();
-
-                var question = new Question(selectedQuestion.QuestionText);
+                var question = new Question(selectedQuestion.QuestionText, selectedQuestion.ImagePath);
                 var answers = new List<Answer>
                 {
                     new Answer(selectedQuestion.AnswerA, selectedQuestion.CorrectAnswer == "A"),
@@ -148,7 +149,7 @@ namespace WpfApp1
         {
             foreach (var question in Questions)
             {
-                databaseManager.AddQuestion(new Question(question.QuestionText), new List<Answer>
+                databaseManager.AddQuestion(new Question(question.QuestionText, question.ImagePath), new List<Answer>
                 {
                     new Answer(question.AnswerA, question.CorrectAnswer == "A"),
                     new Answer(question.AnswerB, question.CorrectAnswer == "B"),
@@ -191,6 +192,16 @@ namespace WpfApp1
             selectedQuestion = null;
             AddQuestionButton.Visibility = Visibility.Visible;
             UpdateQuestionButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void BrowseImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpg)|*.png;*.jpg|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ImagePathTextBox.Text = openFileDialog.FileName;
+            }
         }
     }
 }

@@ -1,44 +1,174 @@
 [
   {
-    "Title": "test",
-    "ID": 62,
+    "Title": "foutgoedtest",
+    "ID": 70,
     "questions": [
       {
-        "QuestionID": 66,
-        "QuizId": 62,
-        "QuestionText": "test",
+        "QuestionID": 78,
+        "QuizId": 70,
+        "QuestionText": "vraag1",
+        "ImagePath": "null",
         "Answers": [
           {
-            "AnswerId": 213,
-            "QuestionId": 66,
-            "AnswerText": "test",
+            "AnswerId": 277,
+            "QuestionId": 78,
+            "AnswerText": "goed",
             "isCorrect": true
           },
           {
-            "AnswerId": 214,
-            "QuestionId": 66,
-            "AnswerText": "test",
+            "AnswerId": 278,
+            "QuestionId": 78,
+            "AnswerText": "fout",
             "isCorrect": false
           },
           {
-            "AnswerId": 215,
-            "QuestionId": 66,
-            "AnswerText": "test",
+            "AnswerId": 279,
+            "QuestionId": 78,
+            "AnswerText": "fout",
             "isCorrect": false
           },
           {
-            "AnswerId": 216,
-            "QuestionId": 66,
-            "AnswerText": "test",
+            "AnswerId": 280,
+            "QuestionId": 78,
+            "AnswerText": "fout",
             "isCorrect": false
+          }
+        ]
+      },
+      {
+        "QuestionID": 79,
+        "QuizId": 70,
+        "QuestionText": "vraag2",
+        "ImagePath": "null",
+        "Answers": [
+          {
+            "AnswerId": 281,
+            "QuestionId": 79,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 282,
+            "QuestionId": 79,
+            "AnswerText": "goed",
+            "isCorrect": true
+          },
+          {
+            "AnswerId": 283,
+            "QuestionId": 79,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 284,
+            "QuestionId": 79,
+            "AnswerText": "fout",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "QuestionID": 80,
+        "QuizId": 70,
+        "QuestionText": "vraag3",
+        "ImagePath": "null",
+        "Answers": [
+          {
+            "AnswerId": 285,
+            "QuestionId": 80,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 286,
+            "QuestionId": 80,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 287,
+            "QuestionId": 80,
+            "AnswerText": "goed",
+            "isCorrect": true
+          },
+          {
+            "AnswerId": 288,
+            "QuestionId": 80,
+            "AnswerText": "fout",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "QuestionID": 81,
+        "QuizId": 70,
+        "QuestionText": "vraag4",
+        "ImagePath": "null",
+        "Answers": [
+          {
+            "AnswerId": 289,
+            "QuestionId": 81,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 290,
+            "QuestionId": 81,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 291,
+            "QuestionId": 81,
+            "AnswerText": "fout",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 292,
+            "QuestionId": 81,
+            "AnswerText": "goed",
+            "isCorrect": true
           }
         ]
       }
     ]
   },
   {
-    "Title": "test",
-    "ID": 63,
-    "questions": []
+    "Title": "foto",
+    "ID": 81,
+    "questions": [
+      {
+        "QuestionID": 89,
+        "QuizId": 81,
+        "QuestionText": "welk logo is dit",
+        "ImagePath": "C:\\Users\\Julian\\Desktop\\RG_tittel_2019.png",
+        "Answers": [
+          {
+            "AnswerId": 329,
+            "QuestionId": 89,
+            "AnswerText": "google",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 330,
+            "QuestionId": 89,
+            "AnswerText": "radiogaga",
+            "isCorrect": true
+          },
+          {
+            "AnswerId": 331,
+            "QuestionId": 89,
+            "AnswerText": "technowire",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 332,
+            "QuestionId": 89,
+            "AnswerText": "test",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
   }
 ]
