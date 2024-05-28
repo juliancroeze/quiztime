@@ -48,35 +48,28 @@ namespace WpfApp1
 
         private void AddQuestionButton_Click(object sender, RoutedEventArgs e)
         {
-            var newQuestion = new QuestionViewModel
+            try
             {
-                QuestionText = QuestionTextBox.Text,
-                AnswerA = AnswerATextBox.Text,
-                AnswerB = AnswerBTextBox.Text,
-                AnswerC = AnswerCTextBox.Text,
-                AnswerD = AnswerDTextBox.Text,
-                CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString(),
-                ImagePath = ImagePathTextBox.Text
-            };
+                ValidateFields();
 
-            var question = new Question(newQuestion.QuestionText, newQuestion.ImagePath);
+                var newQuestion = new QuestionViewModel()
+                {
+                    QuestionText = QuestionTextBox.Text,
+                    AnswerA = AnswerATextBox.Text,
+                    AnswerB = AnswerBTextBox.Text,
+                    AnswerC = AnswerCTextBox.Text,
+                    AnswerD = AnswerDTextBox.Text,
+                    ImagePath = ImagePathTextBox.Text,
+                    CorrectAnswer = ((ComboBoxItem)CorrectAnswerComboBox.SelectedItem)?.Content.ToString()
+                };
 
-            var answers = new List<Answer>
-            {
-                new Answer(newQuestion.AnswerA, newQuestion.CorrectAnswer == "A"),
-                new Answer(newQuestion.AnswerB, newQuestion.CorrectAnswer == "B"),
-                new Answer(newQuestion.AnswerC, newQuestion.CorrectAnswer == "C"),
-                new Answer(newQuestion.AnswerD, newQuestion.CorrectAnswer == "D")
-            };
-
-            int questionID = databaseManager.AddQuestion(question, answers, quizId);
-            if (questionID != -1)
-            {
-                newQuestion.QuestionID = questionID;
                 Questions.Add(newQuestion);
+                ClearQuestionInputs();
             }
-
-            ClearQuestionInputs();
+            catch (QuestionException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void UpdateQuestionButton_Click(object sender, RoutedEventArgs e)
@@ -163,5 +156,20 @@ namespace WpfApp1
             AddQuestionButton.Visibility = Visibility.Visible;
             UpdateQuestionButton.Visibility = Visibility.Collapsed;
         }
+
+        private void ValidateFields()
+        {
+            if (string.IsNullOrEmpty(QuestionTextBox.Text) ||
+                string.IsNullOrEmpty(AnswerATextBox.Text) ||
+                string.IsNullOrEmpty(AnswerBTextBox.Text) ||
+                string.IsNullOrEmpty(AnswerCTextBox.Text) ||
+                string.IsNullOrEmpty(AnswerDTextBox.Text) ||
+                CorrectAnswerComboBox.SelectedItem == null)
+            {
+                throw new QuestionException("Please fill in all fields before proceeding.");
+            }
+        }
     }
+
+
 }

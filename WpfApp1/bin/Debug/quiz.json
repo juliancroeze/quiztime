@@ -2,136 +2,7 @@
   {
     "Title": "foutgoedtest",
     "ID": 70,
-    "questions": [
-      {
-        "QuestionID": 78,
-        "QuizId": 70,
-        "QuestionText": "vraag1",
-        "ImagePath": "null",
-        "Answers": [
-          {
-            "AnswerId": 277,
-            "QuestionId": 78,
-            "AnswerText": "goed",
-            "isCorrect": true
-          },
-          {
-            "AnswerId": 278,
-            "QuestionId": 78,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 279,
-            "QuestionId": 78,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 280,
-            "QuestionId": 78,
-            "AnswerText": "fout",
-            "isCorrect": false
-          }
-        ]
-      },
-      {
-        "QuestionID": 79,
-        "QuizId": 70,
-        "QuestionText": "vraag2",
-        "ImagePath": "null",
-        "Answers": [
-          {
-            "AnswerId": 281,
-            "QuestionId": 79,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 282,
-            "QuestionId": 79,
-            "AnswerText": "goed",
-            "isCorrect": true
-          },
-          {
-            "AnswerId": 283,
-            "QuestionId": 79,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 284,
-            "QuestionId": 79,
-            "AnswerText": "fout",
-            "isCorrect": false
-          }
-        ]
-      },
-      {
-        "QuestionID": 80,
-        "QuizId": 70,
-        "QuestionText": "vraag3",
-        "ImagePath": "null",
-        "Answers": [
-          {
-            "AnswerId": 285,
-            "QuestionId": 80,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 286,
-            "QuestionId": 80,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 287,
-            "QuestionId": 80,
-            "AnswerText": "goed",
-            "isCorrect": true
-          },
-          {
-            "AnswerId": 288,
-            "QuestionId": 80,
-            "AnswerText": "fout",
-            "isCorrect": false
-          }
-        ]
-      },
-      {
-        "QuestionID": 81,
-        "QuizId": 70,
-        "QuestionText": "vraag4",
-        "ImagePath": "null",
-        "Answers": [
-          {
-            "AnswerId": 289,
-            "QuestionId": 81,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 290,
-            "QuestionId": 81,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 291,
-            "QuestionId": 81,
-            "AnswerText": "fout",
-            "isCorrect": false
-          },
-          {
-            "AnswerId": 292,
-            "QuestionId": 81,
-            "AnswerText": "goed",
-            "isCorrect": true
-          }
-        ]
-      }
-    ]
+    "questions": []
   },
   {
     "Title": "foto",
@@ -165,6 +36,44 @@
             "AnswerId": 332,
             "QuestionId": 89,
             "AnswerText": "test",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "test",
+    "ID": 82,
+    "questions": [
+      {
+        "QuestionID": 116,
+        "QuizId": 82,
+        "QuestionText": "ewkglj",
+        "ImagePath": "",
+        "Answers": [
+          {
+            "AnswerId": 437,
+            "QuestionId": 116,
+            "AnswerText": "wekljg",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 438,
+            "QuestionId": 116,
+            "AnswerText": "lewkg",
+            "isCorrect": false
+          },
+          {
+            "AnswerId": 439,
+            "QuestionId": 116,
+            "AnswerText": "welkg",
+            "isCorrect": true
+          },
+          {
+            "AnswerId": 440,
+            "QuestionId": 116,
+            "AnswerText": "lkweg",
             "isCorrect": false
           }
         ]
